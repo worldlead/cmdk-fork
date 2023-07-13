@@ -24,86 +24,82 @@ export function RaycastCMDK() {
   }, [])
 
   return (
-    
-    // <div className="raycast">
-      <Command.Dialog open={open} onOpenChange={setOpen} label="Global Command Menu">
-        {/* <div className="raycast"> */}
-        <div cmdk-raycast-top-shine="" />
-        <Command.Input ref={inputRef} autoFocus placeholder="Search for apps and commands..." />
-        <hr cmdk-raycast-loader="" />
-        <Command.List ref={listRef}>
-          <Command.Empty>No results found.</Command.Empty>
-          <Command.Group heading="Suggestions">
-            <Item value="Linear">
-              <Logo>
-                <LinearIcon
-                  style={{
-                    width: 12,
-                    height: 12,
-                  }}
-                />
-              </Logo>
-              Linear
-            </Item>
-            <Item value="Figma">
-              <Logo>
-                <FigmaIcon />
-              </Logo>
-              Figma
-            </Item>
-            <Item value="Slack">
-              <Logo>
-                <SlackIcon />
-              </Logo>
-              Slack
-            </Item>
-            <Item value="YouTube">
-              <Logo>
-                <YouTubeIcon />
-              </Logo>
-              YouTube
-            </Item>
-            <Item value="Raycast">
-              <Logo>
-                <RaycastIcon />
-              </Logo>
-              Raycast
-            </Item>
-          </Command.Group>
-          <Command.Group heading="Commands">
-            <Item isCommand value="Clipboard History">
-              <Logo>
-                <ClipboardIcon />
-              </Logo>
-              Clipboard History
-            </Item>
-            <Item isCommand value="Import Extension">
-              <HammerIcon />
-              Import Extension
-            </Item>
-            <Item isCommand value="Manage Extensions">
-              <HammerIcon />
-              Manage Extensions
-            </Item>
-          </Command.Group>
-        </Command.List>
-        <div cmdk-raycast-footer="">
-          {theme === 'dark' ? <RaycastDarkIcon /> : <RaycastLightIcon />}
+    open && <div className="raycast">
+      <Command value={value} onValueChange={(v) => setValue(v)}>
+          <div cmdk-raycast-top-shine="" />
+          <Command.Input ref={inputRef} autoFocus placeholder="Search for apps and commands..." />
+          <hr cmdk-raycast-loader="" />
+          <Command.List ref={listRef}>
+            <Command.Empty>No results found.</Command.Empty>
+            <Command.Group heading="Suggestions">
+              <Item value="Linear">
+                <Logo>
+                  <LinearIcon
+                    style={{
+                      width: 12,
+                      height: 12,
+                    }}
+                  />
+                </Logo>
+                Linear
+              </Item>
+              <Item value="Figma">
+                <Logo>
+                  <FigmaIcon />
+                </Logo>
+                Figma
+              </Item>
+              <Item value="Slack">
+                <Logo>
+                  <SlackIcon />
+                </Logo>
+                Slack
+              </Item>
+              <Item value="YouTube">
+                <Logo>
+                  <YouTubeIcon />
+                </Logo>
+                YouTube
+              </Item>
+              <Item value="Raycast">
+                <Logo>
+                  <RaycastIcon />
+                </Logo>
+                Raycast
+              </Item>
+            </Command.Group>
+            <Command.Group heading="Commands">
+              <Item isCommand value="Clipboard History">
+                <Logo>
+                  <ClipboardIcon />
+                </Logo>
+                Clipboard History
+              </Item>
+              <Item isCommand value="Import Extension">
+                <HammerIcon />
+                Import Extension
+              </Item>
+              <Item isCommand value="Manage Extensions">
+                <HammerIcon />
+                Manage Extensions
+              </Item>
+            </Command.Group>
+          </Command.List>
+          <div cmdk-raycast-footer="">
+            {theme === 'dark' ? <RaycastDarkIcon /> : <RaycastLightIcon />}
 
-          <button cmdk-raycast-open-trigger="">
-            Open Application
-            <kbd>↵</kbd>
-          </button>
+            <button cmdk-raycast-open-trigger="">
+              Open Application
+              <kbd>↵</kbd>
+            </button>
 
-          <hr />
+            <hr />
 
-          <SubCommand listRef={listRef} selectedValue={value} inputRef={inputRef} />
-        
-        </div>
-        {/* </div> */}
-      </Command.Dialog>
-    // </div>
-    
+            <SubCommand listRef={listRef} selectedValue={value} inputRef={inputRef} />
+          
+          </div>
+      </Command>
+    </div>
   )
 }
 
